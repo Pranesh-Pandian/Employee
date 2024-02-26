@@ -48,7 +48,7 @@ const Add = () => {
     const handleClick= async e =>{
         e.preventDefault()
         try {
-            const res=await axios.post("http://localhost:5500/add",[emps,maxDate])
+            const res=await axios.post("https://employee-pxqn.onrender.com/add",[emps,maxDate])
             if(res.data==="0") alert("Name is Empty")
             else if(res.data==="1") alert("Id is Empty")
             else if(res.data==="2") alert("Dept is Empty")

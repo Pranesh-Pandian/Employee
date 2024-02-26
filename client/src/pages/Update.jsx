@@ -21,7 +21,7 @@ const Update = () => {
     useEffect(()=>{
         const fetchEmps=async()=>{
             try {
-                const res=await axios.get(`http://localhost:5500/upd/${sId}`)
+                const res=await axios.get(`https://employee-pxqn.onrender.com/upd/${sId}`)
                 console.log(res.data[0])
                 setEmp(res.data[0]);
             } catch (e) {
@@ -59,7 +59,7 @@ const Update = () => {
     const handleClick= async e =>{
         e.preventDefault()
         try {
-            await axios.put("http://localhost:5500/upd/"+sId,emps)
+            await axios.put("https://employee-pxqn.onrender.com/upd/"+sId,emps)
             alert("Succesfully updated")
             navi("/")
         } catch (err) {
