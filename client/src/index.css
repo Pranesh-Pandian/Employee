@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Barriecito&family=Bigelow+Rules&family=Kanit:ital@1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Strike&display=swap');
+
+body{
+  margin: 0 0 20px 0;
+  padding: 0 0 40px 0 ; 
+  background-image: linear-gradient(rgb(106, 225, 255),rgb(77, 136, 255),rgb(4, 0, 255));
+  background-size: contain;
+  height: 100%;
+  overflow: scroll;
+}
+body::-webkit-scrollbar{
+  display: none;
+}
+#erre{
+  font-family: 'Kanit';
+  margin: 0;
+  font-size: 25px;
+}
+#finemp{
+  display: flex;
+  flex-direction: column;
+  padding: 10vh 0 0 0;
+  /* justify-content: center; */
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+table,th,td{
+  border: 5px solid black;
+  font-family: 'Poppins';
+  font-size: 20px;
+  font-weight: 500;
+}
+th{
+  font-weight: 800;
+}
+th,td{
+  padding: 3px 6px 3px 6px;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+}
+button{
+  text-decoration: none;
+  color: black;
+}
+#add{
+  margin: 10px 0 0 0;
+} 
+.addd{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0 0 0;
+  height: 100vh;
+  overflow: hidden;
+}
+form{
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+form input,form select{
+  border: 3px solid black;
+  width: 500px;
+  height: 50px;
+  border-radius: 5px;
+  font-family: 'kanit';
+  font-size: 20px;
+}
+
+form select{
+  width: 510px;
+}
+
+.doo{
+  font-family: 'Kanit';
+  border: 0;
+  height: 40px;
+  font-size: 20px;
+  width: 80px;    
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.head{
+  font-family: 'Kanit';
+}
+
+#tit1{
+  font-family: 'Kanit';
+  text-shadow: 1.5px 1.5px white;
+}
+
+.button{
+  border: 2px solid black;
+  height: 30px;
+  border-radius: 5px;
+  width: 60px;
+  background-color: rgb(130, 128, 255);
+  font-family: 'Kanit';
+  font-size: 15px;
+  font-weight: 200;
+}
