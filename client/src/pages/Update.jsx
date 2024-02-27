@@ -12,7 +12,8 @@ const Update = () => {
         dob:"",
         gender:"",
         desg:"",
-        salary:""
+        salary:"",
+        task:""
     })
 
     const navi=useNavigate()
@@ -21,7 +22,7 @@ const Update = () => {
     useEffect(()=>{
         const fetchEmps=async()=>{
             try {
-                const res=await axios.get(`https://employee-pxqn.onrender.com/upd/${sId}`)
+                const res=await axios.get(`http://localhost:5500/upd/${sId}`)
                 console.log(res.data[0])
                 setEmp(res.data[0]);
             } catch (e) {
@@ -44,12 +45,10 @@ const Update = () => {
           setInputType('text');
         }
       };
-        // const[user,setUser]=useState(false)
 
 
     const handleChange=(e)=>{
         setEmp(prev=>({...prev,[e.target.name]:e.target.value}))
-        // setInputValue(e.target.value);
     };
     const handleDChange=(e)=>{
         setEmp(prev=>({...prev,[e.target.name]:e.target.value}))
@@ -59,7 +58,7 @@ const Update = () => {
     const handleClick= async e =>{
         e.preventDefault()
         try {
-            await axios.put("https://employee-pxqn.onrender.com/upd/"+sId,emps)
+            await axios.put("http://localhost:5500/upd/"+sId,emps)
             alert("Succesfully updated")
             navi("/")
         } catch (err) {
@@ -72,7 +71,7 @@ const Update = () => {
         <h1 className='head'>Update Employee</h1>
         <input type="text" placeholder='Name' onChange={handleChange} name='name' value={emps.name}/>
         <select name="dept" id="input" onChange={handleChange} value={emps.dept}>
-              <option value="" disabled selected id="pc">Select Department</option>
+              <option value="" disabled selected id="pc">Select Departmet</option>
               <option value="HR">HR</option>  
               <option value="Finance">Finance</option>
               <option value="Marketing">Marketing</option>
@@ -86,7 +85,7 @@ const Update = () => {
             <option value="F">F</option>
         </select>
         <select name="desg" id="input" onChange={handleChange} value={emps.des}>
-              <option value="" disabled selected id="pc">Select Designation</option>
+              <option value="" disabled selected id="pc">{emps.des}</option>
               <option value="HR">HR</option>  
               <option value="TL">TL</option>
               <option value="Admin">Admin</option>
@@ -94,6 +93,14 @@ const Update = () => {
               <option value="Manager">Manager</option>
         </select>
         <input type="number" placeholder='Salary' onChange={handleChange} name='salary' min={0} max={99999999} value={emps.salary}/>
+        <select name="task" id="input" onChange={handleChange} value={emps.task}>
+              <option value="" disabled selected id="pc">Select Task</option>
+              <option value="Manage">Manage</option>  
+              <option value="Design">Design</option>
+              <option value="Scaling">Scaling</option>
+              <option value="DevOps">DevOps</option>
+              <option value="PR">PR</option>
+          </select>
         <button  onClick={handleClick} className='doo'>Update</button>
         </form>
     </div>

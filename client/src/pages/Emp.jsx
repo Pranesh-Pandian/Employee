@@ -8,7 +8,7 @@ const Emp = () => {
 
     const handleDelete=async (id)=>{
         try {
-            await axios.delete(`https://employee-pxqn.onrender.com/del/${id}`);
+            await axios.delete(`http://localhost:5500/del/${id}`);
             window.location.reload()
         } catch (err) {
             console.log(err)
@@ -18,7 +18,7 @@ const Emp = () => {
     useEffect(()=>{
         const fetchEmps=async()=>{
             try {
-                const res=await axios.get("https://employee-pxqn.onrender.com/emp")
+                const res=await axios.get("http://localhost:5500/emp")
                 console.log(res.data)
                 setEmp(res.data);
                 
@@ -29,7 +29,7 @@ const Emp = () => {
         fetchEmps();
     },[])
 
-  return (
+  return    (
         <div id='finemp'>
             <h1 id='tit1'>Employee</h1>
             <table>
@@ -42,6 +42,7 @@ const Emp = () => {
                     <th>Gender</th>
                     <th>Designation</th>
                     <th>Salary</th>
+                    <th>Task Assigned</th>
                     <th>Delete</th>
                     <th>Update</th>
                     </tr>
@@ -56,6 +57,7 @@ const Emp = () => {
                             <td>{emps.gender}</td>
                             <td>{emps.des}</td>
                             <td>{emps.salary}</td>
+                            <td>{emps.task}</td>
                             <td><button onClick={()=>handleDelete(emps.id)} className='button'>Delete</button></td>
                             <td><button id="upd" className='button'><Link to={`/upd/${emps.id}`}>Update</Link></button></td>
                         </tr>

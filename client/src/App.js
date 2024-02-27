@@ -12,7 +12,6 @@ function App() {
                 <Route path="/" element={<Emp/>}></Route>
                 <Route path="/add" element={<Addemp/>}></Route>
                 <Route path="/upd/:id" element={<Update/>}></Route>
-
             </Routes>
         </BrowserRouter>
     </div>

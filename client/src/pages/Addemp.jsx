@@ -12,7 +12,8 @@ const Add = () => {
         dob:"",
         gender:"",
         desg:"",
-        salary:""
+        salary:"",
+        task:"",
     })
 
     const[nl,checkNl]=useState(false);
@@ -48,7 +49,7 @@ const Add = () => {
     const handleClick= async e =>{
         e.preventDefault()
         try {
-            const res=await axios.post("https://employee-pxqn.onrender.com/add",[emps,maxDate])
+            const res=await axios.post("http://localhost:5500/add",[emps,maxDate])
             if(res.data==="0") alert("Name is Empty")
             else if(res.data==="1") alert("Id is Empty")
             else if(res.data==="2") alert("Dept is Empty")
@@ -78,7 +79,6 @@ const Add = () => {
         day = '0' + day.toString();
   
     var maxDate = year + '-' + month + '-' + day;
-    // console.log(emps)
     return (
         <div className='addd'>
         <form >
@@ -86,7 +86,6 @@ const Add = () => {
           <input type="text" placeholder='Name' onChange={handleChange} name='name'/>
           {nl && <p id='erre'>Length of the Name should be less than 30 Characters</p>}
           <input type="text" placeholder='Id' onChange={handleChange} name='id'/>  
-          {/* <input type="text" placeholder='Department' onChange={handleChange} name='dept'/> */}
           <select name="dept" id="input" onChange={handleChange}>
               <option value="" disabled selected id="pc">Select Department</option>
               <option value="HR">HR</option>  
@@ -110,6 +109,14 @@ const Add = () => {
               <option value="Manager">Manager</option>
           </select>
           <input type="number" placeholder='Salary' onChange={handleChange} name='salary' min={0} max={99999999}/>
+          <select name="task" id="input" onChange={handleChange}>
+              <option value="" disabled selected id="pc">Select Task</option>
+              <option value="Manage">Manage</option>  
+              <option value="Design">Design</option>
+              <option value="Scaling">Scaling</option>
+              <option value="DevOps">DevOps</option>
+              <option value="PR">PR</option>
+          </select>
           <button  onClick={handleClick} className='doo'>Add</button>
           </form>
       </div>

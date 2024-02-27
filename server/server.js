@@ -33,8 +33,7 @@ app.get("/upd/:id",(req,res)=>{
 
 app.put("/upd/:id",(req,res)=>{
     const empid=req.params.id;
-    console.log(empid)
-    const q=`UPDATE summa SET name="${req.body.name}",dept="${req.body.dept}",dob="${req.body.dob}",gender="${req.body.gender}",des="${req.body.des}",salary=${req.body.salary} WHERE id="${empid}"`
+    const q=`UPDATE summa SET name="${req.body.name}",dept="${req.body.dept}",dob="${req.body.dob}",gender="${req.body.gender}",des="${req.body.desg}",salary=${req.body.salary}, task="${req.body.task}" WHERE id="${empid}"`
     db.query(q,(err,data)=>{    
         if(err) return res.json(err)
         return res.json("Employee updated successfully")
@@ -42,9 +41,8 @@ app.put("/upd/:id",(req,res)=>{
 })
 
 app.post("/add",(req,res)=>{
-    const q="insert into summa (name,id,dept,dob,gender,des,salary) values (?,?,?,?,?,?,?)"
-    const values=[req.body[0].name,req.body[0].id,req.body[0].dept,req.body[0].dob,req.body[0].gender,req.body[0].desg,req.body[0].salary];
-    // console.log(req.body[1])
+    const q="insert into summa (name,id,dept,dob,gender,des,salary,task) values (?,?,?,?,?,?,?,?)"
+    const values=[req.body[0].name,req.body[0].id,req.body[0].dept,req.body[0].dob,req.body[0].gender,req.body[0].desg,req.body[0].salary,req.body[0].task];
     if(values[0]==="") return res.json("0");
     else if(values[1]==="") return res.json("1");
     else if(values[2]==="") return res.json("2");
@@ -56,22 +54,17 @@ app.post("/add",(req,res)=>{
     else if(values[6]>99999999||values[6]<0) return res.json("7");
     db.query(q,values,(err,data)=>{
         if(err) return res.json(err)
-        // console.log("yes")
         return res.json("Added")
     })
 })
 
 app.delete("/del/:id",(req,res)=>{
     const empid=[req.params.id];
-    // console.log(empid)
     const q=`DELETE FROM summa WHERE id= ?`
-    // console.log(q)
     db.query(q,empid,(err,data)=>{
         if(err){
-            // console.log(err) 
             return res.json(err)
         }
-        // console.log("yes")
         return res.json(data) 
     })
 })
@@ -82,5 +75,4 @@ app.get("/",(req,res)=>{
 
 app.listen(5500,()=>{
     console.log("Connected to Server")
-    // return res.json("HELOOOOOOOOOOOO")
 })
