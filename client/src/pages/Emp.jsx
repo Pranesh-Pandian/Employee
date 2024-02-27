@@ -8,7 +8,7 @@ const Emp = () => {
 
     const handleDelete=async (id)=>{
         try {
-            await axios.delete(`http://localhost:5500/del/${id}`);
+            await axios.delete(`https://employee-pxqn.onrender.com/del/${id}`);
             window.location.reload()
         } catch (err) {
             console.log(err)
@@ -18,7 +18,7 @@ const Emp = () => {
     useEffect(()=>{
         const fetchEmps=async()=>{
             try {
-                const res=await axios.get("http://localhost:5500/emp")
+                const res=await axios.get("https://employee-pxqn.onrender.com/emp")
                 console.log(res.data)
                 setEmp(res.data);
                 
